@@ -17,7 +17,7 @@
                     Looks good!
                 </div>
                 <div class="invalid-feedback">
-                    baddddaf
+                    Product Name cannot be empty!
                 </div>
             </div>
             <div class="col-md-4 row form-group d-flex w-50">
@@ -27,7 +27,7 @@
                     Looks good!
                 </div>
                 <div class="invalid-feedback">
-                    bad
+                     Description cannot be empty!
                 </div>
             </div>
             <div class="col-md-4 row form-group d-flex w-50">
@@ -37,44 +37,56 @@
                     Looks good!
                 </div>
                 <div class="invalid-feedback">
-                    BAd
+                    Price cannot be empty!
                 </div>
             </div>
-                                 
-            <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <div class="preview-zone hidden">
-                            <div class="box box-solid">
-                                <div class="box-header with-border">
-                                    <div><b>Upload Image</b></div>
-                                    <div class="box-tools pull-right">
-                                        <button type="button" class="btn btn-danger btn-xs remove-preview">
-                                            <i class="fa fa-times"></i> Clear
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="box-body"></div>
-                            </div>
-                        </div>
-                        <div class="dropzone-wrapper">
-                            <div class="dropzone-desc" ondrop="drop(event)">
-                                <i class="glyphicon glyphicon-download-alt"></i>
-                                <p>Choose an image file or drag it here.</p>
-                            </div>
-                            <input multiple type="file" name="img_logo" class="dropzone">
-                        </div>
-                    </div>
+            <div class="col-md-4 row form-group d-flex w-50">
+                <label for="validationCustom02" class="form-label">Quantity</label>
+                <input class="form-control" id="validationCustom02" type="number" step="any" min="0"  name="number" value="" oninput="check(this)" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Quantity must be greater than 0!
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <button type="submit" class="btn btn-success pull-right">Create Listing</button>
+            @*Drag and Drop*@
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="preview-zone hidden">
+                                <div class="box box-solid">
+                                    <div class="box-header with-border">
+                                        <div><b>Upload Image</b></div>
+                                        <div class="box-tools pull-right">
+                                            <button type="button" class="btn btn-danger btn-xs remove-preview">
+                                                <i class="fa fa-times"></i> Clear
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="box-body"></div>
+                                </div>
+                            </div>
+                            <div class="dropzone-wrapper">
+                                <div class="dropzone-desc" ondrop="drop(event)">
+                                    <i class="glyphicon glyphicon-download-alt"></i>
+                                    <p>Choose an image file or drag it here.</p>
+                                </div>
+                                <input multiple type="file" name="img_logo" class="dropzone">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        @*<button type="button" class="btn btn-success pull-right submit" value="save">Create Listing</button>*@
+                        <input type="submit" class="submit" value="Create Listing" />
+                    </div>
                 </div>
             </div>
-        </div>
         </form>
     </section>
 
@@ -100,21 +112,17 @@
                     }, false)
                 })
         })()
+
+        //Check if Value is greater than 0
+        function check(input) {
+            if (input.value == 0) {
+                input.setCustomValidity('The number must not be zero.');
+            } else {
+                // input is fine -- reset the error message
+                input.setCustomValidity('');
+            }
+        }
     </script>
-
-
-
-
-
-
-
-
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - BootstrapTest - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
